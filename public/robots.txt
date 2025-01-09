@@ -6,4 +6,4 @@ Allow: /
 Host: https://baidu.com/
 
 # Sitemaps
-Sitemap: https://baidu.com//sitemap.xml
+Sitemap: https://baidu.com/sitemap.xml
