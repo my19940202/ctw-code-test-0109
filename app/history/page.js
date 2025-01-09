@@ -1,5 +1,16 @@
+'use client';
 
-export default async function History({ params }) {
+import { useEffect, useState } from "react";
+
+export default function History({ params }) {
+    const [redeemList, setRedeemList] = useState([]);
+    useEffect(() => {
+        fetch('/api/redeem')
+            .then(response => response.json())
+            .then(data => setRedeemList(data.data))
+            .catch(error => console.error('Error fetching redeem list:', error));
+    }, []);
+
     return (
         <div className="max-w-[1280px] mx-auto">
             <div className="overflow-x-auto">
@@ -14,12 +25,18 @@ export default async function History({ params }) {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Blue</td>
-                        </tr>
+                        {redeemList.length > 0 ? redeemList.map(item => (
+                            <tr>
+                                <td>{item.idx + 1}</td>
+                                <td>{item.code}</td>
+                                <td>{item.time}</td>
+                                <td>{item.status}</td>
+                            </tr>
+                        )) : (
+                            <tr>
+                                <td colSpan="4">暂无兑换记录</td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             </div>

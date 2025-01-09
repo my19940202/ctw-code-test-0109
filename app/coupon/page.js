@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import {useState} from 'react';
 
 function formatCode(code) {
     return code.slice(0, 14).replace(/(\d{4})(?=\d)/g, '$1 ').trim();
