@@ -1,7 +1,26 @@
 
 import { NextResponse } from 'next/server'
 
-let redeemList = [];
+let redeemList = [
+    {
+        idx: 0,
+        code: '111122203330',
+        time: new Date().toISOString().split('T')[0],
+        status: 'fail'
+    },
+    {
+        idx: 1,
+        code: '111122203333',
+        time: new Date().toISOString().split('T')[0],
+        status: 'success'
+    },
+    {
+        idx: 2,
+        code: '111122223333',
+        time: new Date().toISOString().split('T')[0],
+        status: 'fail'
+    }
+];
 let idx = 0;
 export async function GET() {
   return NextResponse.json({ success: true, data: redeemList })
