@@ -49,12 +49,22 @@ const invalidCode = (code) => ({
 export async function POST(request) {
   const data = await request.json()
   const { codes } = data
-  console.log('verify post', data)
+  let valid = 0, invalid = 0;
+
   const results = codes.map(code => {
     const randomStatus = Math.floor(Math.random() * 100 % 3) ;
-    if (randomStatus === 0) return validCode(code)
-    if (randomStatus === 1) return invalidCode(code)
-    if (randomStatus === 2) return expiredCode(code)
+    if (randomStatus === 0) {
+      valid++;
+      return validCode(code)
+    }
+    if (randomStatus === 1) {
+      invalid++;
+      return invalidCode(code)
+    }
+    if (randomStatus === 2) {
+      invalid++;
+      return expiredCode(code)
+    }
   })
 
   return NextResponse.json({ 
@@ -62,9 +72,9 @@ export async function POST(request) {
     data: {
         results,
         summary: {
-            total: 3,
-            valid: 1,
-            invalid: 2
+            total: valid + invalid,
+            valid,
+            invalid
         }
     }
   })
