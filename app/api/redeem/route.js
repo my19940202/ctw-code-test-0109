@@ -1,6 +1,7 @@
 
 import { NextResponse } from 'next/server'
 
+// 模拟数据
 let redeemList = [
     {
         idx: 0,
