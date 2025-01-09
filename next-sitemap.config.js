@@ -1,5 +1,5 @@
 module.exports = {
-    siteUrl: 'https://www.clickcounter.online',
+    siteUrl: 'https://baidu.com/',
     generateRobotsTxt: true,
     sitemapSize: 7000,
 };

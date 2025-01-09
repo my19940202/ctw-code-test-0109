@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://www.clickcounter.online
+Host: https://baidu.com/
 
 # Sitemaps
-Sitemap: https://www.clickcounter.online/sitemap.xml
+Sitemap: https://baidu.com//sitemap.xml
